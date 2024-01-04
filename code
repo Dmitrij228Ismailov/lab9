@@ -1,0 +1,22 @@
+import random
+
+def log_sequence(sequence):
+    with open('logfile.txt', 'a') as logfile:  # открываем файл в режиме добавления ('a')
+        logfile.write(' '.join(map(str, sequence)) + '\n')  # сохраняем последовательность чисел в файл, каждая на новой строке
+
+def draw_barrel(n):
+    if n < 1:
+        print("Неверное значение n. Введите натуральное число.")
+        return
+
+    sequence = list(range(1, n + 1))
+    random.shuffle(sequence)
+
+    print("Последовательность чисел:")
+    for num in sequence:
+        print(num, end=' ')
+    
+    log_sequence(sequence)
+
+n = int(input("Введите количество бочонков (n): "))
+draw_barrel(n)
